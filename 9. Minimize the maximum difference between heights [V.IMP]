@@ -1,3 +1,27 @@
+
+def getmindiff(arr,n,k):
+    arr.sort()
+    ans=arr[n-1]-arr[0]
+    minH=arr[0]
+    maxH=arr[n-1]
+    
+    for i in range(1,n):
+        if arr[i]<k:
+            continue
+        minH=min(arr[0]+k,arr[i]-k)
+        maxH=max(arr[i-1]+k,arr[n-1]-k)
+        ans=min(ans,maxH-minH)
+    return ans
+
+#Driver code
+arr = [1, 5, 15, 10]
+k = 3
+n=len(arr)
+ans=getmindiff(arr,n,k)
+print("The maximum difference is: ",ans)
+
+Output: 8
+****************************************************
 Illustration:
 
 Given arr[] = {1, 15, 10}, n = 3, k = 6
