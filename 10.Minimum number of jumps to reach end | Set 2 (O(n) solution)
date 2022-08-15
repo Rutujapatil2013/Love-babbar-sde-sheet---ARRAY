@@ -1,5 +1,37 @@
 10.Minimum number of jumps to reach end | Set 2 (O(n) solution)
 
+def minjumps(arr,n):
+    if n<=1:
+        return 0
+    if arr[0]==0:
+        return -1
+    
+    maxReach=arr[0]
+    step=arr[0]
+    jump=1
+    
+    for i in range(1,n):
+        if i==n-1:
+            return jump
+        maxReach=max(maxReach,i+arr[i])
+        step=step-1
+        
+        if step==0:
+            jump+=1
+            if (i>maxReach):
+                return -1
+            step=maxReach-i
+    return -1
+
+#Diver code
+arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+size=len(arr)
+print("Minimum jumps for reach an end element is: ",minjumps(arr,size))
+
+Output:
+10
+___________________________________________________________________________________________________________
+
 def minJumps(arr, n):
   # The number of jumps needed to reach the starting index is 0
   if (n <= 1):
