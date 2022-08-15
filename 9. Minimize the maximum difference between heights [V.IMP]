@@ -1,1 +1,53 @@
+Illustration:
 
+Given arr[] = {1, 15, 10}, n = 3, k = 6
+Array after sorting => arr[] = {1, 10, 15}
+Initially maxHeight = arr[n – 1] = 15
+            minHeight = arr[0] = 1
+            ans = maxHeight – minHeight = 15 – 1 = 14
+
+At i = 1
+minHeight = min(arr[0] + k, arr[i] – k) = min(1 + 6, 10 – 6) = 4
+maxHeight = max(arr[i – 1] + k, arr[n – 1] – k) = max(1 + 6, 15 – 6) = 9
+ans = min(ans, maxHeight – minHeight) = min(14, 9 – 4) = 5 => ans = 5
+
+At i = 2
+minHeight = min(arr[0] + k, arr[i] – k) = min(1 + 6, 15 – 6) = 7
+maxHeight = max(arr[i – 1] + k, arr[n – 1] – k) = max(10 + 6, 15 – 6) = 16
+ans = min(ans, maxHeight – minHeight) = min(5, 16 – 7) = 5 => ans = 5
+Hence minimum difference is 5 
+
+*************************************
+
+# User function Template
+def getMinDiff(arr, n, k):
+    arr.sort()
+    ans = arr[n - 1] - arr[0]  # Maximum possible height difference
+    tempmin = arr[0]
+    tempmax = arr[n - 1]
+  
+    for i in range(1, n):
+        if arr[i] < k:
+            continue
+        tempmin = min(arr[0] + k, arr[i] - k)
+  
+        # Minimum element when we
+        # add k to whole array
+        # Maximum element when we
+        tempmax = max(arr[i - 1] + k, arr[n - 1] - k)
+  
+        # subtract k from whole array
+        ans = min(ans, tempmax - tempmin)
+    return ans
+  
+# Driver Code Starts
+k = 6
+n = 6
+arr = [7, 4, 8, 8, 8, 9]
+ans = getMinDiff(arr, n, k)
+print(ans)
+
+Output
+5
+Time Complexity: O(N * log(N)), Time is taken for sorting
+Auxiliary Space: O(1)
