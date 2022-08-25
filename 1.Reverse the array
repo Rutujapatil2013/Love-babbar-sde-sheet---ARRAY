@@ -1,0 +1,66 @@
+Input  : arr[] = {1, 2, 3}
+Output : arr[] = {3, 2, 1}
+
+Input :  arr[] = {4, 5, 1, 2}
+Output : arr[] = {2, 1, 5, 4}
+
+*Iterative way
+
+Code:
+def reverseList(A, start, end):
+    while start < end:
+        A[start], A[end] = A[end], A[start]
+        start += 1
+        end -= 1
+ 
+# Driver function to test above function
+A = [1, 2, 3, 4, 5, 6]
+print(A)
+reverseList(A, 0, 5)
+print("Reversed list is")
+print(A)
+
+Output : 
+1 2 3 4 5 6 
+Reversed array is 
+6 5 4 3 2 1 
+Time Complexity : O(n)
+___________________________________________________________________
+* Recursive Way :
+def reverseList(A, start, end):
+    if start >= end:
+        return
+    A[start], A[end] = A[end], A[start]
+    reverseList(A, start+1, end-1)
+ 
+# Driver function to test above function
+A = [1, 2, 3, 4, 5, 6]
+print(A)
+reverseList(A, 0, 5)
+print("Reversed list is")
+print(A)
+
+Output : 
+1 2 3 4 5 6 
+Reversed array is 
+6 5 4 3 2 1 
+Time Complexity : O(n)
+
+___________________________________________________________________
+
+
+def reverseList(A):
+  print( A[::-1])
+     
+# Driver function to test above function
+A = [1, 2, 3, 4, 5, 6]
+print(A)
+print("Reversed list is")
+reverseList(A) 
+Output:
+
+[1, 2, 3, 4, 5, 6]
+Reversed list is
+[6, 5, 4, 3, 2, 1]
+
+___________________________________________________________________
